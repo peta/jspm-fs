@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "test-package": "fs:test-package@latest",
+    "test-package-semver": "fs:test-package-semver@1.0.0"
+  },
+  "jspm": true,
+  "directories": {
+    "lib": "lib"
+  }
+}
