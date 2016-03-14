@@ -36,3 +36,6 @@ build/Release
 node_modules
 
 # Created by .ignore support plugin (hsz.mobi)
+test/jspm_packages/
+test/jspm.browser.js
+test/jspm.config.js
