@@ -52,6 +52,16 @@ class FilesystemLocator {
       throw new FilesystemLocator(
         `Environment variable ${BASEDIR_ENV_NAME} doesn't point to a valid registry base directory: "${this._baseDir}"`);
     }
+
+    // Read alias file
+    const aliasMapFile = path.join(dir, 'aliases.json');
+    try {
+      this._aliasMap = utils.loadJsonFile(aliasMapFile);
+      ui.log('debug', 'FilesystemLocator: Alias mapping loaded ('+aliasMapFile+')');
+    } catch (exc) {
+      ui.log('debug', 'FilesystemLocator: No alias mapping file found ('+aliasMapFile+')');
+      this._aliasMap = {};
+    }
   }
 
   /**
@@ -60,6 +70,10 @@ class FilesystemLocator {
    * @returns {Promise}
    */
   locate(packageName) {
+    // Evaluate aliases definitions first since they have precedence
+    if (this._aliasMap[packageName])
+      return Promise.resolve({ redirect: this._aliasMap[packageName] });
+
     // TODO: Add support for absolute file paths (when pkgName doesn't begin with alphanum char)
     const expectedSourceDir = path.resolve(path.join(this._baseDir, packageName));
     if (!expectedSourceDir.startsWith(this._baseDir)) {
