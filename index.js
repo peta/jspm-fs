@@ -55,7 +55,7 @@ class FilesystemLocator {
     }
 
     // Read alias file
-    const aliasMapFile = path.join(dir, 'aliases.json');
+    const aliasMapFile = path.join(this._baseDir, 'aliases.json');
     try {
       this._aliasMap = utils.loadJsonFile(aliasMapFile);
       ui.log('debug', 'FilesystemLocator: Alias mapping loaded ('+aliasMapFile+')');
