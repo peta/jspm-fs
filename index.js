@@ -23,7 +23,7 @@ class FilesystemLocatorError extends Error {}
 class FilesystemLocator {
 
   /**
-   * Interactive registry configuration hook invoked by jspm-cli
+   * Interactive registry hook `configure` invoked by jspm-cli
    * @param {object} config
    * @param {object} ui
    * @returns {Promise}
@@ -32,7 +32,10 @@ class FilesystemLocator {
     return ui.input(
       'Enter absolute directory path to where your package release files reside: ',
       config.baseDir || process.env[BASEDIR_ENV_NAME]
-    ).then(baseDir => config.baseDir = baseDir);
+    ).then(function(baseDir) {
+      config.baseDir = baseDir;
+      return config;
+    });
   }
 
   constructor(options, ui) {
