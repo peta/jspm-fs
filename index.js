@@ -14,7 +14,7 @@ const BASEDIR_ENV_NAME = 'JSPM_REGISTRY_FS_BASEDIR';
 /**
  * Custom exception class for all jspn-fs related errors
  */
-class FilesystemLocatiorError extends Error {}
+class FilesystemLocatorError extends Error {}
 
 /**
  * FilesystemLocator is an implementation of the JSPM Registry API which uses the local/network filesystem
@@ -42,8 +42,8 @@ class FilesystemLocator {
     console.log(options.apiVersion);
     
     if (!semver.satisfies(options.apiVersion, '>=1.7')) {
-      throw new FilesystemLocatiorError('Current jspm-fs version isn\'t compatible to the jspm Endpoint API v' + options.apiVersion + '\n' +
-      'Please update or install a compatible version of jspm-fs.');
+      throw new FilesystemLocatorError('Current jspm-fs version isn\'t compatible to the jspm Endpoint API v' +
+        options.apiVersion + '\n' + 'Please update or install a compatible version of jspm-fs.');
     }
 
     // Determine base directory used to resolve symbolic package names
@@ -63,7 +63,7 @@ class FilesystemLocator {
     // TODO: Add support for absolute file paths (when pkgName doesn't begin with alphanum char)
     const expectedSourceDir = path.resolve(path.join(this._baseDir, packageName));
     if (!expectedSourceDir.startsWith(this._baseDir)) {
-      const error = new FilesystemLocatiorError('FilesystemLocator: Invalid package name! Package name must not contain relative path fragments');
+      const error = new FilesystemLocatorError('Invalid package name! Package name must not contain relative path fragments');
       error.config = true;
       return Promise.reject(error);
     }
@@ -85,7 +85,7 @@ class FilesystemLocator {
     // TODO: Add support for absolute file paths (when pkgName doesn't begin with alphanum char)
     const expectedSourceDir = path.resolve(path.join(this._baseDir, packageName));
     if (!expectedSourceDir.startsWith(this._baseDir)) {
-      const error = new FilesystemLocatiorError('FilesystemLocator: Invalid package name! Package name must not contain relative path fragments');
+      const error = new FilesystemLocatorError('FilesystemLocator: Invalid package name! Package name must not contain relative path fragments');
       error.config = true;
       return Promise.reject(error);
     }
@@ -122,7 +122,7 @@ class FilesystemLocator {
     // TODO: Add support for absolute file paths (when pkgName doesn't begin with alphanum char)
     const expectedSourceDir = path.resolve(path.join(this._baseDir, packageName));
     if (!expectedSourceDir.startsWith(this._baseDir)) {
-      const error = new FilesystemLocatiorError('FilesystemLocator: Invalid package name! Package name must not contain relative path fragments');
+      const error = new FilesystemLocatorError('FilesystemLocator: Invalid package name! Package name must not contain relative path fragments');
       error.config = true;
       return Promise.reject(error);
     }
