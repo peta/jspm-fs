@@ -24,6 +24,24 @@ Everything `jspm-fs` takes, is the absolute path to the root directory where all
 
 The recommended way to configure this directory path is to use the command `jspm registry config fs`. But you can also introduce an environment variable called `JSPM_REGISTRY_FS_BASEDIR` and set it to the valid absolute directory path.
 
+### Aliasing
+
+Similarly as known from the default `jspm-registry`, you can define package name lookup aliases in a *jspm-fs* registry folder. When *jspm-fs* detects a JSON file called `aliases.json` in the global registry base directory:
+
+```
+/path/to/our/registry/basedir
+    |-- aliases.json
+```
+
+it expects the file to contain a plain object with key-value string pairs whereas `key` is the exact package name and `value` is the package identifier (JSPM-style scheme) the lookup request should be redirected to. Example `aliases.json` file content:
+
+```json
+{
+  "jquery": "jspm:jquery",
+  "my-package": "npm:my-package"
+}
+```
+
 ## How to publish packages
 
 Package release files must be named according to the following scheme: `{package-name}-{version}.zip`. Whereas `{package-name}` corresponds to the official package name as contained in the `name` package.json property, and `{version}` is an arbitrary version identifier (both, semver-compatible and symbolic version identifiers are allowed). Since our registry may contain multiple versions of the same package and we want to keeps things clear, they must furthermore be grouped into sub-directories whose name corresponds to the according package name.
@@ -32,11 +50,14 @@ Let's illustrate this with an example: We have a fictitious package called `my-p
 
 ```
 /path/to/our/registry/basedir
+    |-- aliases.json
     |-- my-package
         |-- my-package-0.0.1.zip
         |-- my-package-0.1.0.zip
         |-- my-package-1.0.0.zip
 ```
+
+By using this naming convention we get a semver-based versioning syntax
 
 ## Meta
 
