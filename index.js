@@ -42,8 +42,6 @@ class FilesystemLocator {
     this._ui = ui;
     this.versionString = options.versionString + '.1';
 
-    console.log(options.apiVersion);
-    
     if (!semver.satisfies(options.apiVersion, '>=1.7')) {
       throw new FilesystemLocatorError('Current jspm-fs version isn\'t compatible to the jspm Endpoint API v' +
         options.apiVersion + '\n' + 'Please update or install a compatible version of jspm-fs.');
