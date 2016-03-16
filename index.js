@@ -167,8 +167,8 @@ class FilesystemLocator {
 
 }
 
-Object.defineProperty(FilesystemLocator, 'packageFormat', {
-  value: /^fs:([^@\/]+(@[^\/]+)?(\/.+)?)$/i,
+Object.defineProperty(FilesystemLocator, 'packageNameFormats', {
+  value: ['*'],
   enumerable: true
 });
 
