@@ -1,5 +1,7 @@
 # jspm-fs
-JSPM registry implementation for your local filesystem (including paths to mounted network shares). Using `jspm-fs` you can operate a simple stupid *offline package registry* which consists just of a bunch of folders and files. Version informations are derived from the filename.
+JSPM registry implementation for your local filesystem (including paths to mounted network shares). Using `jspm-fs` you can operate a simple stupid *offline package registry* which consists just of folders and files. No magic, no server or database. Version informations are derived from the filename.
+
+The *jspm-fs* registry was developed as part of modular web application build system which is centered around `systemjs-builder` and `jspm`. It is compatible with the latest 0.17 branch of jspm-cli.
 
 __Supports windows, mac and linux-based operating systems.__
 
