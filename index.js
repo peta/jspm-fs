@@ -5,7 +5,7 @@ if (typeof Map !== 'function') throw new Error('Package "jspm-fs" requires ES6 l
 const path = require('path');
 const fs = require('graceful-fs');
 const semver = require('semver');
-const unzip = require('unzip');
+const unzip = require('unzip2');
 const utils = require('./lib/utils');
 
 // Constants
