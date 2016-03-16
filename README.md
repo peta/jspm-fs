@@ -5,6 +5,7 @@ The *jspm-fs* registry was developed as part of modular web application build sy
 
 __Supports windows, mac and linux-based operating systems.__
 
+[![npm version](https://badge.fury.io/js/jspm-fs.png)](https://badge.fury.io/js/jspm-fs)
 
 ## Installation
 
