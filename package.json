@@ -1,6 +1,6 @@
 {
   "name": "jspm-fs",
-  "version": "0.2.7",
+  "version": "0.2.9",
   "description": "JSPM location service for local filesystem",
   "main": "index.js",
   "directories": {
