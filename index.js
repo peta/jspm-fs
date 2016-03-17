@@ -95,7 +95,7 @@ class FilesystemLocator {
    */
   lookup(packageName) {
     let result = { notfound: true };
-    const pkgFilenamePattern = new RegExp(`^${packageName}-([\\d\\.]+|latest|beta)\\.zip$`, 'i');
+    const pkgFilenamePattern = new RegExp(`^${packageName}-(.+)\\.zip$`, 'i');
 
     // TODO: Add support for absolute file paths (when pkgName doesn't begin with alphanum char)
     const expectedSourceDir = path.resolve(path.join(this._baseDir, packageName));
